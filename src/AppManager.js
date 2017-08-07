@@ -2,6 +2,7 @@ import {observable, action, computed} from 'mobx';
 import {fromPromise} from "mobx-utils/lib/from-promise";
 import {fetchJson} from "./util";
 import {PENDING} from "mobx-utils";
+import {ContactListManager} from "./list-tab/ContactListManager";
 
 const JSON_URL = "http://jsonplaceholder.typicode.com/users";
 
@@ -16,6 +17,12 @@ export default class AppManager {
     @computed
     get isLoading() {
         return this.promise.state === PENDING;
+    }
+
+    // returns ContactListManager instance
+    @computed
+    get contactListManager() {
+        return this.promise.value && new ContactListManager(this.promise.value)
     }
 
     // current selected tab
