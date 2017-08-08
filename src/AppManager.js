@@ -1,8 +1,9 @@
 import {observable, action, computed} from 'mobx';
 import {fromPromise} from "mobx-utils/lib/from-promise";
 import {fetchJson} from "./util";
-import {PENDING} from "mobx-utils";
-import {ContactListManager} from "./list-tab/ContactListManager";
+import {PENDING, REJECTED} from "mobx-utils";
+import {ListTabManager} from "./list-tab/ListTabManager";
+import {AdminTabManager} from "./admin-tab/AdminTabManager";
 
 const JSON_URL = "http://jsonplaceholder.typicode.com/users";
 
@@ -19,10 +20,22 @@ export default class AppManager {
         return this.promise.state === PENDING;
     }
 
-    // returns ContactListManager instance
+    // did we have error in load?
     @computed
-    get contactListManager() {
-        return this.promise.value && new ContactListManager(this.promise.value)
+    get isLoadingError() {
+        return this.promise.state === REJECTED;
+    }
+
+    // returns ListTabManager instance
+    @computed
+    get listTabManager() {
+        return this.promise.value && new ListTabManager(this.promise.value)
+    }
+
+    // returns AdminTabManager instance
+    @computed
+    get adminTabManager() {
+        return this.promise.value && new AdminTabManager(this.promise.value)
     }
 
     // current selected tab

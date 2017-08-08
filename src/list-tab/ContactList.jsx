@@ -1,15 +1,16 @@
 import React from 'react';
 import {observer} from 'mobx-react';
+import {List} from "react-toolbox/lib/list";
 import ContactListItem from "./ContactListItem";
 
 const ContactList = observer(props =>
-    <div>
+    <List selectable ripple>
         {
-            props.contactListManager.listForDisplay.map(item =>
+            props.list.map(item =>
                 <ContactListItem key={item.key} item={item}/>
             )
         }
-    </div>
+    </List>
 );
 
 export default ContactList;
