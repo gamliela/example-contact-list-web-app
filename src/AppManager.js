@@ -5,7 +5,7 @@ import {PENDING, REJECTED} from "mobx-utils";
 import {ListTabManager} from "./list-tab/ListTabManager";
 import {AdminTabManager} from "./admin-tab/AdminTabManager";
 
-const JSON_URL = "http://jsonplaceholder.typicode.com/users";
+const JSON_URL = "https://jsonplaceholder.typicode.com/users";
 
 export default class AppManager {
 
