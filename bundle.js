@@ -17528,7 +17528,7 @@ function _applyDecoratedDescriptor(target, property, decorators, descriptor, con
 
 
 
-var JSON_URL = "http://jsonplaceholder.typicode.com/users";
+var JSON_URL = "https://jsonplaceholder.typicode.com/users";
 
 var AppManager = (_dec = __WEBPACK_IMPORTED_MODULE_0_mobx__["action"].bound, (_class = function () {
 
